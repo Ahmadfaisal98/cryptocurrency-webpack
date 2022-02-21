@@ -1,0 +1,41 @@
+.news {
+  &__text {
+    color: black !important;
+    margin: 10px 0px !important;
+  }
+
+  &__select {
+    width: 180px;
+  }
+
+  &__card {
+    min-height: 300px !important;
+  }
+
+  &__image {
+    display: flex !important;
+    justify-content: space-between !important;
+
+    img {
+      width: 30%;
+      height: 100px;
+    }
+  }
+
+  &__title {
+    width: 65%;
+    font-size: 18px !important;
+  }
+
+  &__provider {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    line-height: 18.5px;
+
+    &-name {
+      margin: 0 10px;
+      flex: 1;
+    }
+  }
+}

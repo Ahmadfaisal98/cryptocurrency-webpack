@@ -1,0 +1,20 @@
+.homepage {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+
+  &__show-more {
+    margin-top: 0px !important;
+  }
+
+  @media screen and (max-width: 800px) {
+    &__title {
+      font-size: 1.4rem !important;
+    }
+
+    &__show-more {
+      font-size: 1.3rem !important;
+    }
+  }
+}

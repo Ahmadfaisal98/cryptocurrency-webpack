@@ -1,0 +1,26 @@
+.line-chart {
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+  color: #0071bd;
+
+  &__title {
+    color: #0071bd !important;
+  }
+
+  &__price {
+    display: flex !important;
+    gap: 20px !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+  }
+
+  &__change {
+    font-weight: 900 !important;
+  }
+
+  &__current {
+    margin-top: 0px !important;
+    font-weight: 900 !important;
+  }
+}

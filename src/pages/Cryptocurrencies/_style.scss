@@ -1,0 +1,21 @@
+.cryptocurrencies {
+  min-height: 65vh !important;
+
+  &__card {
+    min-width: 250px;
+  }
+
+  &__image {
+    width: 35px;
+  }
+
+  &__search {
+    margin: 20px auto 30px auto;
+    width: 250px;
+  }
+
+  &__search {
+    margin: 20px auto 30px auto;
+    width: 250px;
+  }
+}

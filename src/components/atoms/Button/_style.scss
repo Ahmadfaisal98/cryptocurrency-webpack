@@ -1,0 +1,24 @@
+.btn {
+  background-color: green !important;
+
+  // Size
+  &__small {
+    width: 2rem !important;
+  }
+  &__medium {
+    width: 3rem !important;
+  }
+  &__large {
+    width: 10rem !important;
+  }
+
+  // Color
+  &--blue {
+    background-color: #1890ff !important;
+    color: #fff !important;
+  }
+  &--green {
+    background-color: green !important;
+    color: #aaa !important;
+  }
+}

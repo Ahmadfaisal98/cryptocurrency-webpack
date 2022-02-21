@@ -1,0 +1,165 @@
+.crypto-detail {
+  margin: 30px;
+
+  @media screen and (max-width: 500px) {
+    margin: 0;
+  }
+
+  &__heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-bottom: 1px solid $border;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    gap: 10px;
+
+    p {
+      font-size: 1rem;
+      opacity: 0.9;
+      margin-bottom: 20px;
+    }
+
+    &-name {
+      font-weight: 900;
+      color: $blue;
+    }
+  }
+
+  &__select-period {
+    width: 200px !important;
+    margin-top: 20px !important;
+  }
+
+  &__stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+
+    @media screen and (max-width: 1000px) {
+      &__stats {
+        flex-direction: column;
+      }
+    }
+
+    &-heading {
+      p {
+        font-size: 1rem;
+        opacity: 0.9;
+      }
+    }
+  }
+
+  &__title {
+    font-weight: 700 !important;
+    margin-top: 20px !important;
+    color: $blue !important;
+
+    > p {
+      margin-top: 20px;
+    }
+  }
+
+  &__coin {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid $border;
+    font-size: 1rem;
+    opacity: 0.9;
+    padding: 20px;
+
+    &:hover {
+      background-color: $bg-secondary;
+    }
+
+    &--name {
+      display: flex;
+      gap: 10px;
+      font-size: 1rem;
+    }
+
+    &--value {
+      font-weight: 800;
+    }
+  }
+
+  &__info-heading {
+    p {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+  }
+
+  &__desc {
+    display: flex;
+    gap: 40px;
+    margin-top: 40px;
+    padding-top: 20px;
+
+    h2 {
+      font-weight: 700;
+      color: $blue;
+    }
+
+    @media screen and (max-width: 1000px) {
+      flex-direction: column;
+
+      h2 {
+        margin-top: 0px;
+      }
+    }
+
+    p {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    a {
+      color: $blue;
+    }
+
+    h3 {
+      font-weight: 700;
+    }
+
+    &-coin {
+      flex: 0.5;
+    }
+
+    &-link {
+      padding: 0px 20px;
+      flex: 0.5;
+
+      @media screen and (max-width: 500px) {
+        &-links {
+          padding: 0px;
+        }
+      }
+    }
+  }
+
+  &__link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid $border;
+    padding: 20px;
+
+    a {
+      color: $blue;
+      font-weight: 700;
+      font-size: 1rem;
+
+      &:hover {
+        background-color: $bg-secondary;
+      }
+    }
+
+    &--name {
+      text-transform: capitalize;
+      font-size: 1rem;
+    }
+  }
+}
