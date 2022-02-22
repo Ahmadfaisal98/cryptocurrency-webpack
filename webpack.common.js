@@ -43,4 +43,9 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
   },
+  devServer: {
+    static: './dist',
+    historyApiFallback: true,
+    hot: true,
+  },
 };

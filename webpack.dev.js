@@ -22,9 +22,5 @@ module.exports = merge(common, {
       },
     ],
   },
-  devServer: {
-    static: './dist',
-    // hot: true
-  },
   plugins: [new ReactRefreshWebpackPlugin()],
 });
