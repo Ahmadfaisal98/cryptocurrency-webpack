@@ -3,8 +3,10 @@ import { Menu, Typography, Avatar } from 'antd';
 import { Link } from 'react-router-dom';
 import { HomeOutlined, BulbOutlined, FundOutlined } from '@ant-design/icons/lib/icons';
 
-import icon from '../../../images/logo-criptocurrency.png';
-import { MenuButton } from '../../molecules';
+import icon from '@/images/logo-criptocurrency.png';
+import { MenuButton } from '@/components/molecules';
+
+const { Item } = Menu;
 
 const Navbar = () => {
   const [activeMenu, setActiveMenu] = useState(false);
@@ -41,15 +43,15 @@ const Navbar = () => {
 
         {activeMenu && (
           <Menu theme="dark">
-            <Menu.Item icon={<HomeOutlined />}>
+            <Item key={1} icon={<HomeOutlined />}>
               <Link to="/">Home</Link>
-            </Menu.Item>
-            <Menu.Item icon={<FundOutlined />}>
+            </Item>
+            <Item key={2} icon={<FundOutlined />}>
               <Link to="/cryptocurrencies">Crytocurrencies</Link>
-            </Menu.Item>
-            <Menu.Item icon={<BulbOutlined />}>
+            </Item>
+            <Item key={3} icon={<BulbOutlined />}>
               <Link to="/news">News</Link>
-            </Menu.Item>
+            </Item>
           </Menu>
         )}
       </div>

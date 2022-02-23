@@ -3,10 +3,8 @@ import millify from 'millify';
 import { Link } from 'react-router-dom';
 import { Card, Row, Col, Input } from 'antd';
 
-// import { useGetCryptosQuery } from 'services/cryptoApi';
-import { useGetCryptosQuery } from '../../services/cryptoApi';
-// import { Loader } from 'components/atoms';
-import { Loader } from '../../components/atoms';
+import { useGetCryptosQuery } from '@/services/cryptoApi';
+import { Loader } from '@/components/atoms';
 
 const Cryptocurrencies = ({ simplified }) => {
   const count = simplified ? 10 : 100;
@@ -36,9 +34,9 @@ const Cryptocurrencies = ({ simplified }) => {
       )}
 
       <Row gutter={[32, 32]} className="cryptocurrencies">
-        {cryptos?.map((currency) => (
-          <Col xs={24} sm={12} lg={6} className="cryptocurrencies__card" key={currency.id}>
-            <Link key={currency.uuid} to={`/crypto/${currency.uuid}`}>
+        {cryptos?.map((currency, index) => (
+          <Col xs={24} sm={12} lg={6} className="cryptocurrencies__card" key={index}>
+            <Link to={`/crypto/${currency.uuid}`}>
               <Card
                 title={`${currency.rank}. ${currency.name}`}
                 hoverable

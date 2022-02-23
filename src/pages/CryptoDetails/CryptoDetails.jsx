@@ -15,9 +15,9 @@ import {
   ThunderboltOutlined,
 } from '@ant-design/icons';
 
-import { useGetCryproDetailsQuery, useGetCryproHistoryQuery } from '../../services/cryptoApi';
-import { LineChart } from '../../components/organisms';
-import { Loader } from '../../components/atoms';
+import { useGetCryproDetailsQuery, useGetCryproHistoryQuery } from '@/services/cryptoApi';
+import { LineChart } from '@/components/organisms';
+import { Loader } from '@/components/atoms';
 
 const { Title, Text } = Typography;
 const { Option } = Select;
@@ -103,8 +103,8 @@ const CryptoDetails = () => {
         placeholder="Select Time Period"
         onChange={(value) => setTimePeriod(value)}
       >
-        {time.map((date) => (
-          <Option key={date}>{date}</Option>
+        {time.map((date, index) => (
+          <Option key={index}>{date}</Option>
         ))}
       </Select>
 
@@ -126,8 +126,8 @@ const CryptoDetails = () => {
             </Title>
             <p>An overview showing the stats of {cryptoDetails.name}</p>
           </Col>
-          {stats.map(({ icon, title, value }) => (
-            <Col className="crypto-detail__coin" key={title}>
+          {stats.map(({ icon, title, value }, index) => (
+            <Col className="crypto-detail__coin" key={index}>
               <Col className="crypto-detail__coin--name">
                 <Text>{icon}</Text>
                 <Text>{title}</Text>
@@ -143,8 +143,8 @@ const CryptoDetails = () => {
             </Title>
             <p>An overview showing the stats of all cryptocurrency</p>
           </Col>
-          {genericStats.map(({ icon, title, value }) => (
-            <Col className="crypto-detail__coin" key={title}>
+          {genericStats.map(({ icon, title, value }, index) => (
+            <Col className="crypto-detail__coin" key={index}>
               <Col className="crypto-detail__coin--name">
                 <Text>{icon}</Text>
                 <Text>{title}</Text>
@@ -158,15 +158,15 @@ const CryptoDetails = () => {
       <Col className="crypto-detail__desc">
         <Row className="crypto-detail__desc-coin">
           <Title level={3} className="crypto-detail__title">
-            What is {cryptoDetails.name}?{HTMLReactParser(cryptoDetails.description)}
+            What is {cryptoDetails.name}? <div>{HTMLReactParser(cryptoDetails.description)}</div>
           </Title>
         </Row>
         <Col className="crypto-detail__desc-link">
           <Title level={3} className="crypto-detail__title">
             {cryptoDetails.name} Links
           </Title>
-          {cryptoDetails.links.map((link) => (
-            <Row className="crypto-detail__link" key={link.name}>
+          {cryptoDetails.links.map((link, index) => (
+            <Row className="crypto-detail__link" key={index}>
               <Title level={5} className="crypto-detail__link--name">
                 {link.type}
               </Title>

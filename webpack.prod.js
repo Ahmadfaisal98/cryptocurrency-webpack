@@ -3,6 +3,7 @@ const common = require('./webpack.common');
 const { merge } = require('webpack-merge');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const globImporter = require('node-sass-glob-importer');
 
 module.exports = merge(common, {
   mode: 'production',
@@ -21,10 +22,23 @@ module.exports = merge(common, {
       {
         test: /\.s?css$/i,
         use: [
-          MiniCssExtractPlugin.loader, // 4. Extract css into files
-          'css-loader', // 3. Turns css into commonjs
-          'postcss-loader', // 2. add auto prefix
-          'sass-loader', // 1. Turns sass into css
+          {
+            loader: MiniCssExtractPlugin.loader, // 4. Extract css into files
+          },
+          {
+            loader: 'css-loader', // 3. Turns css into commonjs
+          },
+          {
+            loader: 'postcss-loader', // 2. add auto prefix
+          },
+          {
+            loader: 'sass-loader', // 1. Turn sass into css
+            options: {
+              sassOptions: {
+                importer: globImporter(),
+              },
+            },
+          },
         ],
       },
     ],

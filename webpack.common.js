@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { DefinePlugin } = require('webpack');
+const path = require('path');
 
 // replace accordingly './.env' with the path of your .env file
 require('dotenv').config({ path: './.env' });
@@ -10,7 +11,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/template.html',
+      template: './src/index.html',
     }),
     new DefinePlugin({
       'process.env': JSON.stringify(process.env),
@@ -42,10 +43,10 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.jsx'],
-  },
-  devServer: {
-    static: './dist',
-    historyApiFallback: true,
-    hot: true,
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, './src'),
+      },
+    },
   },
 };

@@ -1,6 +1,6 @@
 import { MenuOutlined } from '@ant-design/icons';
 import React from 'react';
-import { Button } from '../../atoms';
+import { Button } from '@/components/atoms';
 
 const MenuButton = ({ onClick }) => {
   return (
