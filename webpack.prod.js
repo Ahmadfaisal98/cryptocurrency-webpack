@@ -12,6 +12,7 @@ module.exports = merge(common, {
     filename: '[name].[chunkhash].bundle.js',
     path: path.resolve(__dirname, 'dist'),
     assetModuleFilename: './imgs/[name].[hash].[ext]',
+    publicPath: '/',
   },
   plugins: [
     new MiniCssExtractPlugin({ filename: '[name].[chunkhash].css' }),
