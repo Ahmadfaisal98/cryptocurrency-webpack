@@ -16,9 +16,19 @@
   &--blue {
     background-color: #1890ff;
     color: #fff;
+
+    &:focus {
+      background-color: #1890ff;
+      color: #fff;
+    }
   }
   &--green {
     background-color: green;
     color: #aaa;
+
+    &:focus {
+      background-color: green;
+      color: #aaa;
+    }
   }
 }
