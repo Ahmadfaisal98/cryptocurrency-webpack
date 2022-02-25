@@ -1,10 +1,10 @@
 .menu-button {
-  display: none !important;
-  position: absolute !important;
-  right: 20px !important;
-  top: 25px !important;
-  font-size: 1.2rem !important;
-  border: none !important;
+  display: none;
+  position: absolute;
+  right: 20px;
+  top: 25px;
+  font-size: 1.2rem;
+  border: none;
 
   &__content {
     display: flex;
@@ -12,7 +12,7 @@
   }
 
   @media screen and (max-width: 800px) {
-    display: flex !important;
+    display: flex;
     align-items: center;
   }
 }

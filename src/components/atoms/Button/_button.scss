@@ -1,24 +1,24 @@
 .btn {
-  background-color: green !important;
+  background-color: green;
 
   // Size
   &__small {
-    width: 2rem !important;
+    width: 2rem;
   }
   &__medium {
-    width: 3rem !important;
+    width: 3rem;
   }
   &__large {
-    width: 10rem !important;
+    width: 10rem;
   }
 
   // Color
   &--blue {
-    background-color: #1890ff !important;
-    color: #fff !important;
+    background-color: #1890ff;
+    color: #fff;
   }
   &--green {
-    background-color: green !important;
-    color: #aaa !important;
+    background-color: green;
+    color: #aaa;
   }
 }

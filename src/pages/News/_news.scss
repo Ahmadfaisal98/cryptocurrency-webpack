@@ -1,7 +1,7 @@
 .news {
   &__text {
-    color: black !important;
-    margin: 10px 0px !important;
+    color: black;
+    margin: 10px 0px;
   }
 
   &__select {
@@ -9,12 +9,12 @@
   }
 
   &__card {
-    min-height: 300px !important;
+    min-height: 300px;
   }
 
   &__image {
-    display: flex !important;
-    justify-content: space-between !important;
+    display: flex;
+    justify-content: space-between;
 
     img {
       width: 30%;
@@ -24,7 +24,7 @@
 
   &__title {
     width: 65%;
-    font-size: 18px !important;
+    font-size: 18px;
   }
 
   &__provider {
