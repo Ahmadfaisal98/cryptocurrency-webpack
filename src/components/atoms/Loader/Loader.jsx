@@ -1,8 +1,8 @@
-import React from "react"
-import { Spin } from "antd"
+import React from 'react';
+import { Spin } from 'antd';
 
 const Loader = () => {
-  return <Spin className="loader" />
-}
+  return <Spin className="loader" />;
+};
 
-export default Loader
+export default Loader;

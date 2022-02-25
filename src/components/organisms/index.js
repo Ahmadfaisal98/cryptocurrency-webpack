@@ -1,3 +1,14 @@
-export { default as LineChart } from "./LineChart/LineChart"
-export { default as Navbar } from "./Navbar/Navbar"
-export { default as Footer } from "./Footer/Footer"
+import React, { lazy, Suspense } from 'react';
+
+const Suspensed = (Element) =>
+  function suspense(props) {
+    return (
+      <Suspense fallback={<div />}>
+        <Element {...props} />
+      </Suspense>
+    );
+  };
+
+export const LineChart = Suspensed(lazy(() => import('./LineChart/LineChart')));
+export const Navbar = Suspensed(lazy(() => import('./Navbar/Navbar')));
+export const Footer = Suspensed(lazy(() => import('./Footer/Footer')));

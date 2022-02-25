@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Menu, Typography, Avatar } from 'antd';
 import { Link } from 'react-router-dom';
-import { HomeOutlined, BulbOutlined, FundOutlined } from '@ant-design/icons/lib/icons';
+import {
+  HomeOutlined,
+  BulbOutlined,
+  FundOutlined,
+} from '@ant-design/icons/lib/icons';
 
 import icon from '@/images/logo-criptocurrency.png';
 import { MenuButton } from '@/components/molecules';

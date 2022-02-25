@@ -1,4 +1,19 @@
-export { default as Cryptocurrencies } from "./Cryptocurrencies/Cryptocurrencies"
-export { default as CryptoDetails } from "./CryptoDetails/CryptoDetails"
-export { default as Homepage } from "./Homepage/Homepage"
-export { default as News } from "./News/News"
+import React, { lazy, Suspense } from 'react';
+
+const Suspensed = (Element) =>
+  function suspense(props) {
+    return (
+      <Suspense fallback={<div />}>
+        <Element {...props} />
+      </Suspense>
+    );
+  };
+
+export const Cryptocurrencies = Suspensed(
+  lazy(() => import('./Cryptocurrencies/Cryptocurrencies'))
+);
+export const CryptoDetails = Suspensed(
+  lazy(() => import('./CryptoDetails/CryptoDetails'))
+);
+export const Homepage = Suspensed(lazy(() => import('./Homepage/Homepage')));
+export const News = Suspensed(lazy(() => import('./News/News')));

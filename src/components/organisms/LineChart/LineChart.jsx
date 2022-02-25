@@ -1,6 +1,6 @@
-import React from "react"
-import { Line } from "react-chartjs-2"
-import { Col, Row, Typography } from "antd"
+import React from 'react';
+import { Line } from 'react-chartjs-2';
+import { Col, Row, Typography } from 'antd';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -9,33 +9,40 @@ import {
   LineElement,
   Tooltip,
   Legend,
-} from "chart.js"
+} from 'chart.js';
 
-const { Title } = Typography
+const { Title } = Typography;
 
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Legend)
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Tooltip,
+  Legend
+);
 
 const LineChart = ({ coinHistory, currentPrice, coinName }) => {
-  const coinsPrice = []
-  const coinTImestamp = []
+  const coinsPrice = [];
+  const coinTImestamp = [];
 
   coinHistory?.data?.history?.forEach((history) => {
-    coinsPrice.push(history.price)
-    coinTImestamp.push(new Date(history.timestamp).toLocaleDateString())
-  })
+    coinsPrice.push(history.price);
+    coinTImestamp.push(new Date(history.timestamp).toLocaleDateString());
+  });
 
   const data = {
     labels: coinTImestamp,
     datasets: [
       {
-        label: "Price in USD",
+        label: 'Price in USD',
         data: coinsPrice,
         fil: false,
-        backgroundColor: "#0071bd",
-        borderColor: "#0071bd",
+        backgroundColor: '#0071bd',
+        borderColor: '#0071bd',
       },
     ],
-  }
+  };
 
   return (
     <>
@@ -54,7 +61,7 @@ const LineChart = ({ coinHistory, currentPrice, coinName }) => {
       </Row>
       <Line data={data} />
     </>
-  )
-}
+  );
+};
 
-export default LineChart
+export default LineChart;

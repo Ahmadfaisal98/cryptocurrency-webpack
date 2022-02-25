@@ -1,11 +1,14 @@
-import { Space, Typography } from "antd"
-import React from "react"
-import { Link } from "react-router-dom"
+import React from 'react';
+import { Space, Typography } from 'antd';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
     <div className="footer">
-      <Typography.Title level={5} style={{ color: "white", textAlign: "center" }}>
+      <Typography.Title
+        level={5}
+        style={{ color: 'white', textAlign: 'center' }}
+      >
         Copyright © 2022 by
         <Link to="/"> Ahmad Faisal</Link>
       </Typography.Title>
@@ -15,7 +18,7 @@ const Footer = () => {
         <Link to="/news">News</Link>
       </Space>
     </div>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

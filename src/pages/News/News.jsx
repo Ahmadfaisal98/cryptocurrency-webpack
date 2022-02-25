@@ -9,7 +9,8 @@ import { Loader } from '@/components/atoms';
 const { Text, Title } = Typography;
 const { Option } = Select;
 
-const demoImage = 'https://www.bing.com/th?id=OVFT.mpzuVZnv8dwIMRfQGPbOPC&pid=News';
+const demoImage =
+  'https://www.bing.com/th?id=OVFT.mpzuVZnv8dwIMRfQGPbOPC&pid=News';
 
 const News = ({ simplified }) => {
   const [newsCategory, setNewsCategory] = useState('Cryptocurrency');
@@ -65,11 +66,17 @@ const News = ({ simplified }) => {
               </p>
               <div className="news__provider">
                 <Avatar
-                  src={news.provider[0]?.image?.thumbnail?.contentUrl || demoImage}
+                  src={
+                    news.provider[0]?.image?.thumbnail?.contentUrl || demoImage
+                  }
                   alt="news"
                 />
-                <Text className="news__provider-name">{news.provider[0]?.name}</Text>
-                <Text>{moment(news.datePublished).startOf('ss').fromNow()}</Text>
+                <Text className="news__provider-name">
+                  {news.provider[0]?.name}
+                </Text>
+                <Text>
+                  {moment(news.datePublished).startOf('ss').fromNow()}
+                </Text>
               </div>
             </a>
           </Card>
