@@ -5,7 +5,7 @@ This project uses:
 1. SASS with naming BEM class
 2. Use webpack
 3. Use antd 90%
-4. use Atomic Design
+4. Use Atomic Design
 ```
 
 You can see it at https://cryptoverse-webpack.netlify.app/
