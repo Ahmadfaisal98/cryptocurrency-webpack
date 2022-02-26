@@ -38,7 +38,7 @@ const Navbar = () => {
     <div className="navbar">
       <div className="navbar__container">
         <div className="navbar__logo">
-          <Avatar src={icon} size="large" />
+          <Avatar src={icon} size="large" alt="logo" />
           <Typography.Title level={2} className="navbar__name">
             <Link to="/">Cryptoverse</Link>
           </Typography.Title>
