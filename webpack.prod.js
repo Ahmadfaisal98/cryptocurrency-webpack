@@ -19,12 +19,6 @@ module.exports = merge(common, {
     maxEntrypointSize: 512000,
     maxAssetSize: 512000,
   },
-  optimization: {
-    splitChunks: {
-      minSize: 10000,
-      maxSize: 250000,
-    },
-  },
   plugins: [
     new MiniCssExtractPlugin({ filename: '[name].[chunkhash].css' }),
     new CleanWebpackPlugin(),
