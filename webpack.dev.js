@@ -12,6 +12,7 @@ if (process.env.SERVE) {
 module.exports = merge(common, {
   mode: 'development',
   devtool: false,
+  target: 'web',
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
@@ -20,13 +21,16 @@ module.exports = merge(common, {
   module: {
     rules: [
       {
-        test: /\.s?css$/i,
+        test: /(\.css|\.scss|\.sass)$/,
         use: [
           {
             loader: 'style-loader', // 3. Inject style into dom
           },
           {
             loader: 'css-loader', // 2. Turns css into commonjs
+            options: {
+              sourceMap: true,
+            },
           },
           {
             loader: 'sass-loader', // 1. Turn sass into css
@@ -34,6 +38,7 @@ module.exports = merge(common, {
               sassOptions: {
                 importer: globImporter(),
               },
+              sourceMap: true,
             },
           },
         ],
