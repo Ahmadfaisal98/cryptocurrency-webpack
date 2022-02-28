@@ -25,21 +25,33 @@ const Homepage = () => {
           <Statistic title="Total Cryptocurrencies" value={globalStats.total} />
         </Col>
         <Col span={12}>
-          <Statistic title="Total Exchanges" value={milify(globalStats.totalExchanges)} />
+          <Statistic
+            title="Total Exchanges"
+            value={milify(globalStats.totalExchanges)}
+          />
         </Col>
         <Col span={12}>
-          <Statistic title="Total Market Cap" value={milify(globalStats.totalMarketCap)} />
+          <Statistic
+            title="Total Market Cap"
+            value={milify(globalStats.totalMarketCap)}
+          />
         </Col>
         <Col span={12}>
-          <Statistic title="Total 24h Volume" value={milify(globalStats.total24hVolume)} />
+          <Statistic
+            title="Total 24h Volume"
+            value={milify(globalStats.total24hVolume)}
+          />
         </Col>
         <Col span={12}>
-          <Statistic title="Total Markets" value={milify(globalStats.totalMarkets)} />
+          <Statistic
+            title="Total Markets"
+            value={milify(globalStats.totalMarkets)}
+          />
         </Col>
       </Row>
 
       <div className="homepage">
-        <Title level={2} className="homepage__title">
+        <Title level={2} className="heading">
           Top 10 Cryptocurrencies in the Word
         </Title>
         <Title level={3} className="homepage__show-more">
