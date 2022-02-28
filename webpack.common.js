@@ -1,7 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { DefinePlugin } = require('webpack');
 const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 // replace accordingly './.env' with the path of your .env file
 require('dotenv').config({ path: './.env' });
@@ -16,11 +15,6 @@ module.exports = {
     }),
     new DefinePlugin({
       'process.env': JSON.stringify(process.env),
-    }),
-    new MiniCssExtractPlugin({
-      filename: '[name].[chunkhash].css',
-      chunkFilename: '[id].css',
-      ignoreOrder: true,
     }),
   ],
   module: {

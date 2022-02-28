@@ -4,6 +4,7 @@ const { merge } = require('webpack-merge');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const globImporter = require('node-sass-glob-importer');
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = merge(common, {
   mode: 'production',
@@ -19,7 +20,18 @@ module.exports = merge(common, {
     maxEntrypointSize: 512000,
     maxAssetSize: 512000,
   },
-  plugins: [new CleanWebpackPlugin()],
+  optimization: {
+    minimize: true,
+    minimizer: [new TerserPlugin()],
+  },
+  plugins: [
+    new CleanWebpackPlugin(),
+    new MiniCssExtractPlugin({
+      filename: '[name].[chunkhash].css',
+      chunkFilename: '[id].css',
+      ignoreOrder: true,
+    }),
+  ],
   module: {
     rules: [
       {
