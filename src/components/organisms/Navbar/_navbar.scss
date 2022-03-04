@@ -8,11 +8,11 @@
     margin: 10px;
     height: 100vh;
     margin: 0px;
-    background-color: rgb(0, 21, 41);
+    background-color: var(--background-navbar);
   }
 
-  &__logo {
-    background-color: #001529;
+  &__header {
+    background-color: var(--background-navbar);
     display: flex;
     padding: 20px;
     align-items: center;
@@ -24,8 +24,13 @@
     margin-bottom: 0;
 
     a {
-      color: white;
+      color: var(--text-navbar);
     }
+  }
+
+  &__switch {
+    margin-top: 10px;
+    margin-left: 10px;
   }
 
   @media screen and (max-width: 800px) {

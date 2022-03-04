@@ -1,6 +1,43 @@
-@media screen and (max-width: 800px) {
-  .ant-menu {
-    position: absolute;
-    right: 0px;
-  }
+.ant-menu.ant-menu-dark {
+  background-color: var(--background-navbar);
+}
+
+.ant-menu-dark .ant-menu-item > span > a {
+  color: var(--text-navbar);
+}
+
+.ant-menu-item .ant-menu-item-icon {
+  color: var(--icon-navbar);
+}
+
+.ant-layout {
+  background-color: var(--background-page);
+}
+
+.ant-switch {
+  background-color: var(--background-navbar);
+}
+
+.ant-card-bordered {
+  border: 1px solid var(--card-borderd);
+}
+
+.ant-card-hoverable:hover {
+  box-shadow: var(--card-box-shadow);
+}
+
+.ant-menu-dark .ant-menu-item:hover > span > a {
+  color: orange;
+}
+
+h2.ant-typography {
+  color: var(--text-color);
+}
+
+.ant-statistic-title {
+  color: var(--text-title);
+}
+
+.ant-statistic-content {
+  color: var(--text-content);
 }

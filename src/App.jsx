@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { Layout } from 'antd';
+import { Layout, Switch } from 'antd';
 
 import 'antd/dist/antd.css';
 import './sass/main.scss';
@@ -8,9 +8,17 @@ import { Homepage, Cryptocurrencies, CryptoDetails, News } from './pages';
 import { Footer, Navbar } from './components/organisms';
 
 const App = () => {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
   return (
-    <div className="app">
+    <div className={`app ${isDarkMode ? 'dark-mode' : ''}`}>
       <Navbar />
+
+      <Switch
+        defaultChecked
+        className="toggle-theme"
+        onChange={() => setIsDarkMode(!isDarkMode)}
+      />
 
       <div className="main">
         <Layout>

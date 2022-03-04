@@ -1,6 +1,7 @@
 .app {
   display: flex;
   overflow: hidden;
+  position: relative;
 }
 
 .main {
@@ -10,6 +11,13 @@
 
 .routes {
   padding: 20px;
+}
+
+.toggle-theme {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  z-index: 10;
 }
 
 @media screen and (max-width: 1300px) {
@@ -41,5 +49,9 @@
     margin-top: 90px;
     margin-left: 0px;
     margin-right: 10px;
+  }
+
+  .toggle-theme {
+    display: none;
   }
 }
