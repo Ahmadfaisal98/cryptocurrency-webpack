@@ -44,3 +44,7 @@ h2.ant-typography {
 .ant-layout {
   min-height: calc(100vh - 95.8px);
 }
+
+.ant-switch-handle::before {
+  background-color: var(--icon-navbar);
+}
