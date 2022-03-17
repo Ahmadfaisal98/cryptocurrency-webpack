@@ -2,15 +2,18 @@
 @import 'abstracts/mixins';
 @import 'abstracts/variables';
 
-@import '../components/atoms/**/*.scss';
-@import '../components/molecules/**/*.scss';
-@import '../components/organisms/**/*.scss';
-@import '../components/templates/**/*.scss';
-@import '../pages/**/*.scss';
-
 @import 'base/animation';
 @import 'base/base';
 @import 'base/typography';
 @import 'base/utilities';
 
+@import 'themes/default';
+@import 'themes/darkMode';
+
 @import './vendors/antd';
+
+@import '../components/atoms/**/*.scss';
+@import '../components/molecules/**/*.scss';
+@import '../components/organisms/**/*.scss';
+@import '../components/templates/**/*.scss';
+@import '../pages/**/*.scss';

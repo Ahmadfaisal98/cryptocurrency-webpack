@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import reportWebVitals from './reportWebVitals';
+// import reportWebVitals from './reportWebVitals';
 
 import App from './App';
 import store from './app/store';
@@ -16,4 +16,4 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-reportWebVitals(console.log);
+// reportWebVitals(console.log);

@@ -1,6 +1,6 @@
 .navbar {
   flex: 0.2;
-  background-color: rgb(0, 21, 41);
+  background-color: var(--background-navbar);
 
   &__container {
     position: fixed;
@@ -8,6 +8,7 @@
     margin: 10px;
     height: 100vh;
     margin: 0px;
+    width: 20%;
     background-color: var(--background-navbar);
   }
 

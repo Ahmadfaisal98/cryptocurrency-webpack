@@ -1,50 +1,56 @@
+import { Card, Col, Input, Row, Typography } from 'antd';
 import React, { useEffect, useState } from 'react';
 import millify from 'millify';
 import { useNavigate } from 'react-router-dom';
-import { Card, Row, Col, Input } from 'antd';
 import { HeartFilled } from '@ant-design/icons';
-
-import { useGetCryptosQuery } from '@/services/cryptoApi';
-import { Loader } from '@/components/atoms';
-// import { addFavorite } from '@/features/userSlice';
 import {
-  useAddFavoriteMutation,
-  useGetFavoritesQuery,
   useRemoveFavoriteMutation,
+  useGetFavoritesQuery,
 } from '@/services/serverApi';
+import { useGetCryptosQuery } from '@/services/cryptoApi';
 
-const Cryptocurrencies = ({ simplified }) => {
-  const count = simplified ? 10 : 100;
-  const { data: cryptosList, isFetching } = useGetCryptosQuery(count);
-  const [addFavorite] = useAddFavoriteMutation();
-  const [removeFavorite] = useRemoveFavoriteMutation();
-  const [cryptos, setCryptos] = useState([]);
+const { Title } = Typography;
+
+const Favorite = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const navigate = useNavigate();
+  const [cryptos, setCryptos] = useState([]);
+  const [removeFavorite] = useRemoveFavoriteMutation();
+  const { data: cryptosList } = useGetCryptosQuery(100);
   const { data: uuidFavorite } = useGetFavoritesQuery();
+  const navigate = useNavigate();
+
+  // const favorites = useSelector((state) => state.userSlice.favorite);
 
   const arrUuidFavorite = uuidFavorite?.favorite.map((fav) => fav.uuidCrypto);
 
+  const favorites = cryptosList?.data.coins.filter((coin) => {
+    return arrUuidFavorite?.includes(coin.uuid);
+  });
+
   useEffect(() => {
-    const filteredData = cryptosList?.data.coins.filter((coin) =>
+    const filteredData = favorites?.filter((coin) =>
       coin.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
-
     setCryptos(filteredData);
-  }, [cryptosList, searchTerm]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [uuidFavorite, searchTerm]);
 
-  if (isFetching) return <Loader />;
+  const handleFavorite = (uuidCrypto) => {
+    // dispatch(removeFavorite(currency));
+    removeFavorite({ uuidCrypto });
+  };
 
   return (
     <>
-      {!simplified && (
-        <div className="cryptocurrencies__search">
-          <Input
-            placeholder="Search Cryptocurrency"
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-        </div>
-      )}
+      <Title className="heading" level={2}>
+        Favorite
+      </Title>
+      <div className="cryptocurrencies__search">
+        <Input
+          placeholder="Search Cryptocurrency"
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+      </div>
 
       <Row gutter={[32, 32]} className="cryptocurrencies">
         {cryptos?.map((currency, index) => (
@@ -71,14 +77,8 @@ const Cryptocurrencies = ({ simplified }) => {
               <p>Market Cap: {millify(currency.marketCap)}</p>
               <p>Daily Change: {millify(currency.change)}</p>
               <HeartFilled
-                className={`cryptocurrencies__heart ${
-                  arrUuidFavorite?.includes(currency.uuid) ? 'active' : ''
-                }`}
-                onClick={() =>
-                  arrUuidFavorite?.includes(currency.uuid)
-                    ? removeFavorite({ uuidCrypto: currency.uuid })
-                    : addFavorite({ uuidCrypto: currency.uuid })
-                }
+                className="cryptocurrencies__heart active"
+                onClick={() => handleFavorite(currency.uuid)}
               />
             </Card>
           </Col>
@@ -88,4 +88,4 @@ const Cryptocurrencies = ({ simplified }) => {
   );
 };
 
-export default Cryptocurrencies;
+export default Favorite;

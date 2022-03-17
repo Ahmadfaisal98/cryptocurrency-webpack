@@ -4,7 +4,14 @@ import { Layout, Switch } from 'antd';
 
 import 'antd/dist/antd.css';
 import './sass/main.scss';
-import { Homepage, Cryptocurrencies, CryptoDetails, News } from './pages';
+import {
+  Homepage,
+  Cryptocurrencies,
+  CryptoDetails,
+  News,
+  Login,
+  Favorite,
+} from './pages';
 import { Footer, Navbar } from './components/organisms';
 
 const App = () => {
@@ -31,7 +38,9 @@ const App = () => {
                 element={<Cryptocurrencies />}
               />
               <Route exact path="/crypto/:coinId" element={<CryptoDetails />} />
-              <Route exact path="News" element={<News />} />
+              <Route exact path="news" element={<News />} />
+              <Route exact path="login" element={<Login />} />
+              <Route exact path="favorite" element={<Favorite />} />
             </Routes>
           </div>
         </Layout>

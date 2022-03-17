@@ -1,4 +1,5 @@
-.ant-menu.ant-menu-dark {
+.ant-menu.ant-menu-dark,
+.ant-switch {
   background-color: var(--background-navbar);
 }
 
@@ -14,10 +15,6 @@
   background-color: var(--background-page);
 }
 
-.ant-switch {
-  background-color: var(--background-navbar);
-}
-
 .ant-card-bordered {
   border: 1px solid var(--card-borderd);
 }
@@ -30,14 +27,20 @@
   color: orange;
 }
 
-h2.ant-typography {
-  color: var(--text-color);
-}
-
 .ant-statistic-title {
   color: var(--text-title);
 }
 
 .ant-statistic-content {
   color: var(--text-content);
+}
+
+.ant-form-item-label > label,
+.ant-checkbox + span,
+h2.ant-typography {
+  color: var(--text-color);
+}
+
+.ant-layout {
+  min-height: calc(100vh - 95.8px);
 }

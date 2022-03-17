@@ -5,10 +5,7 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
   return (
     <div className="footer">
-      <Typography.Title
-        level={5}
-        style={{ color: 'white', textAlign: 'center' }}
-      >
+      <Typography.Title level={5}>
         Copyright © 2022 by
         <Link to="/"> Ahmad Faisal</Link>
       </Typography.Title>

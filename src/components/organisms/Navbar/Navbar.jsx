@@ -5,6 +5,8 @@ import {
   HomeOutlined,
   BulbOutlined,
   FundOutlined,
+  LoginOutlined,
+  HeartOutlined,
 } from '@ant-design/icons/lib/icons';
 
 import icon from '@/images/logo-criptocurrency.png';
@@ -55,6 +57,12 @@ const Navbar = () => {
             </Item>
             <Item key={3} icon={<BulbOutlined />}>
               <Link to="/news">News</Link>
+            </Item>
+            <Item key={4} icon={<HeartOutlined />}>
+              <Link to="/favorite">Favorite</Link>
+            </Item>
+            <Item key={5} icon={<LoginOutlined />}>
+              <Link to="/login">Login</Link>
             </Item>
           </Menu>
         )}

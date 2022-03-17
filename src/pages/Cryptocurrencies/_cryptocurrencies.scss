@@ -3,6 +3,22 @@
 
   &__card {
     min-width: 250px;
+    position: relative;
+  }
+
+  &__heart {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    font-size: 20px;
+
+    &:hover {
+      color: red;
+    }
+
+    &.active {
+      color: red;
+    }
   }
 
   &__image {

@@ -17,3 +17,5 @@ export const CryptoDetails = Suspensed(
 );
 export const Homepage = Suspensed(lazy(() => import('./Homepage/Homepage')));
 export const News = Suspensed(lazy(() => import('./News/News')));
+export const Login = Suspensed(lazy(() => import('./Login/Login')));
+export const Favorite = Suspensed(lazy(() => import('./Favorite/Favorite')));

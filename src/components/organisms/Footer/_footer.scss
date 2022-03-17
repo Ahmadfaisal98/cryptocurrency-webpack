@@ -1,7 +1,13 @@
 .footer {
-  background-color: #001529;
+  background-color: var(--background-navbar);
   display: flex;
   flex-direction: column;
   padding: 20px;
   align-items: center;
+
+  h5 {
+    color: var(--background-page);
+    text-align: center;
+    font-weight: 400;
+  }
 }
