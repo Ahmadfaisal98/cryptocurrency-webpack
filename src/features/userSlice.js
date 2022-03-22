@@ -1,19 +1,31 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = { name: '', favorite: [] };
+const initialState = {
+  name: '',
+  favorite: [],
+  formLogin: { email: '', password: '' },
+  isLogin: false,
+};
 
 const userSlice = createSlice({
-  name: 'counter',
+  name: 'userSlice',
   initialState,
   reducers: {
-    setName(state, actions) {
-      state.name = actions.payload;
+    setName(state, action) {
+      state.name = action.payload;
     },
-    addFavorite(state, actions) {
-      state.favorite.push(actions.payload);
+    addFavorite(state, action) {
+      state.favorite.push(action.payload);
+    },
+    setLoginForm(state, action) {
+      state.formLogin = action.payload;
+    },
+    setIsLogin(state, action) {
+      state.isLogin = action.payload;
     },
   },
 });
 
-export const { setName, addFavorite } = userSlice.actions;
+export const { setName, addFavorite, setLoginForm, setIsLogin } =
+  userSlice.actions;
 export default userSlice.reducer;

@@ -1,17 +1,18 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { getCookie } from '@/helpers/cookie';
 
-const baseUrl = 'https://server-cryptocurrency.herokuapp.com';
-
-const serverApiHeaders = {
-  Authorization: `Bearer ${getCookie('accessToken')}`,
-};
-
-const createRequest = (url) => ({ url, headers: serverApiHeaders });
-
 export const serverApi = createApi({
   reducerPath: 'serverApi',
-  baseQuery: fetchBaseQuery({ baseUrl }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: 'https://server-cryptocurrency.herokuapp.com',
+    prepareHeaders: (headers) => {
+      const token = getCookie('accessToken');
+      if (token) {
+        headers.set('authorization', `Bearer ${token}`);
+      }
+      return headers;
+    },
+  }),
   tagTypes: ['Server'],
   endpoints: (builder) => ({
     postLogin: builder.mutation({
@@ -22,13 +23,12 @@ export const serverApi = createApi({
       }),
     }),
     getFavorites: builder.query({
-      query: () => createRequest(`/favorite`),
+      query: () => ({ url: `/favorite` }),
       providesTags: ['Server'],
     }),
     addFavorite: builder.mutation({
       query: (body) => ({
         url: `/favorite`,
-        headers: serverApiHeaders,
         method: 'POST',
         body,
       }),
@@ -37,7 +37,6 @@ export const serverApi = createApi({
     removeFavorite: builder.mutation({
       query: (body) => ({
         url: `/favorite`,
-        headers: serverApiHeaders,
         method: 'DELETE',
         body,
       }),

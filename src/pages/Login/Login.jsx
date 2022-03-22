@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Form, Input, Button, Checkbox, Typography } from 'antd';
 import { usePostLoginMutation } from '@/services/serverApi';
 import { Loader } from '@/components/atoms';
+import { useDispatch } from 'react-redux';
+import { setIsLogin, setLoginForm } from '@/features/userSlice';
 
 const { Title } = Typography;
 const { Item } = Form;
@@ -9,16 +11,21 @@ const { Item } = Form;
 const Login = () => {
   const [postLogin, { data, isFetching, error, isSuccess }] =
     usePostLoginMutation();
+  const dispatch = useDispatch();
 
   const onFinish = ({ email, password }) => {
     postLogin({ email, password });
+    dispatch(setLoginForm({ email, password }));
   };
 
   if (error) console.log(error);
 
-  if (isSuccess) {
-    document.cookie = `accessToken = ${data.access_token}`;
-  }
+  useEffect(() => {
+    if (isSuccess) {
+      dispatch(setIsLogin(true));
+      document.cookie = `accessToken = ${data.access_token}`;
+    }
+  }, [dispatch, isSuccess, data]);
 
   if (isFetching) return <Loader />;
 
@@ -33,7 +40,7 @@ const Login = () => {
           labelCol={{ span: 4 }}
           wrapperCol={{ span: 16 }}
           initialValues={{ remember: true }}
-          onFinish={onFinish}
+          onFinish={(e) => onFinish(e)}
           autoComplete="off"
         >
           <Item

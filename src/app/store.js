@@ -17,4 +17,5 @@ export default configureStore({
       .concat(cryptoApi.middleware)
       .concat(cryptoNewsApi.middleware)
       .concat(serverApi.middleware),
+  devTools: process.env.NODE_ENV !== 'production',
 });

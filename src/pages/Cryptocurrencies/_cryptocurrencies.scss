@@ -11,6 +11,7 @@
     bottom: 30px;
     right: 30px;
     font-size: 20px;
+    z-index: 100000;
 
     &:hover {
       color: red;
@@ -24,6 +25,7 @@
   &__image {
     width: 35px;
     height: 35px;
+    cursor: pointer;
   }
 
   &__search {

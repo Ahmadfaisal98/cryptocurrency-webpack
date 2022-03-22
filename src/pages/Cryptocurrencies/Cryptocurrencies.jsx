@@ -3,6 +3,7 @@ import millify from 'millify';
 import { useNavigate } from 'react-router-dom';
 import { Card, Row, Col, Input } from 'antd';
 import { HeartFilled } from '@ant-design/icons';
+import { useSelector } from 'react-redux';
 
 import { useGetCryptosQuery } from '@/services/cryptoApi';
 import { Loader } from '@/components/atoms';
@@ -13,7 +14,7 @@ import {
   useRemoveFavoriteMutation,
 } from '@/services/serverApi';
 
-const Cryptocurrencies = ({ simplified }) => {
+const Cryptocurrencies = ({ simplified, data, handleFavorite }) => {
   const count = simplified ? 10 : 100;
   const { data: cryptosList, isFetching } = useGetCryptosQuery(count);
   const [addFavorite] = useAddFavoriteMutation();
@@ -21,9 +22,18 @@ const Cryptocurrencies = ({ simplified }) => {
   const [cryptos, setCryptos] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const navigate = useNavigate();
-  const { data: uuidFavorite } = useGetFavoritesQuery();
+  let { data: uuidFavorite } = useGetFavoritesQuery();
+  const isLogin = useSelector((state) => state.userSlice.isLogin);
 
-  const arrUuidFavorite = uuidFavorite?.favorite.map((fav) => fav.uuidCrypto);
+  let dataDisplay = cryptos;
+  if (data) {
+    dataDisplay = data;
+  }
+  if (!isLogin) {
+    uuidFavorite = [];
+  }
+
+  let arrUuidFavorite = uuidFavorite?.favorite?.map((fav) => fav.uuidCrypto);
 
   useEffect(() => {
     const filteredData = cryptosList?.data.coins.filter((coin) =>
@@ -37,7 +47,7 @@ const Cryptocurrencies = ({ simplified }) => {
 
   return (
     <>
-      {!simplified && (
+      {!simplified && !data && (
         <div className="cryptocurrencies__search">
           <Input
             placeholder="Search Cryptocurrency"
@@ -47,7 +57,7 @@ const Cryptocurrencies = ({ simplified }) => {
       )}
 
       <Row gutter={[32, 32]} className="cryptocurrencies">
-        {cryptos?.map((currency, index) => (
+        {dataDisplay?.map((currency, index) => (
           <Col
             xs={24}
             sm={12}
@@ -57,7 +67,6 @@ const Cryptocurrencies = ({ simplified }) => {
           >
             <Card
               title={`${currency.rank}. ${currency.name}`}
-              hoverable
               extra={
                 <img
                   className="cryptocurrencies__image"
@@ -69,16 +78,18 @@ const Cryptocurrencies = ({ simplified }) => {
             >
               <p>Price: {millify(currency.price)}</p>
               <p>Market Cap: {millify(currency.marketCap)}</p>
-              <p>Daily Change: {millify(currency.change)}</p>
+              <p>Daily Change: {currency.change && millify(currency.change)}</p>
               <HeartFilled
                 className={`cryptocurrencies__heart ${
                   arrUuidFavorite?.includes(currency.uuid) ? 'active' : ''
                 }`}
-                onClick={() =>
-                  arrUuidFavorite?.includes(currency.uuid)
+                onClick={() => {
+                  data
+                    ? handleFavorite(currency.uuid)
+                    : arrUuidFavorite?.includes(currency.uuid)
                     ? removeFavorite({ uuidCrypto: currency.uuid })
-                    : addFavorite({ uuidCrypto: currency.uuid })
-                }
+                    : addFavorite({ uuidCrypto: currency.uuid });
+                }}
               />
             </Card>
           </Col>
