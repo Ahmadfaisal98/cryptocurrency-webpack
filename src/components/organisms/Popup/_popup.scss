@@ -1,0 +1,16 @@
+.popup {
+  .ant-modal-content {
+    z-index: 200;
+  }
+
+  .ant-modal-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &__gif {
+    width: 50%;
+    height: 50%;
+    cursor: pointer;
+  }
+}

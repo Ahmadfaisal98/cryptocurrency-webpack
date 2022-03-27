@@ -13,11 +13,12 @@ import {
   useGetFavoritesQuery,
   useRemoveFavoriteMutation,
 } from '@/services/serverApi';
+import { Popup } from '@/components/organisms';
 
 const Cryptocurrencies = ({ simplified, data, handleFavorite }) => {
   const count = simplified ? 10 : 100;
   const { data: cryptosList, isFetching } = useGetCryptosQuery(count);
-  const [addFavorite] = useAddFavoriteMutation();
+  const [addFavorite, { error }] = useAddFavoriteMutation();
   const [removeFavorite] = useRemoveFavoriteMutation();
   const [cryptos, setCryptos] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -47,6 +48,9 @@ const Cryptocurrencies = ({ simplified, data, handleFavorite }) => {
 
   return (
     <>
+      {error?.data.message === 'Please login first' && (
+        <Popup title={error?.data.message} />
+      )}
       {!simplified && !data && (
         <div className="cryptocurrencies__search">
           <Input

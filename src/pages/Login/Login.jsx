@@ -4,6 +4,7 @@ import { usePostLoginMutation } from '@/services/serverApi';
 import { Loader } from '@/components/atoms';
 import { useDispatch } from 'react-redux';
 import { setIsLogin, setLoginForm } from '@/features/userSlice';
+import { useNavigate } from 'react-router-dom';
 
 const { Title } = Typography;
 const { Item } = Form;
@@ -12,10 +13,12 @@ const Login = () => {
   const [postLogin, { data, isFetching, error, isSuccess }] =
     usePostLoginMutation();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const onFinish = ({ email, password }) => {
-    postLogin({ email, password });
+  const onFinish = async ({ email, password }) => {
+    await postLogin({ email, password });
     dispatch(setLoginForm({ email, password }));
+    navigate('/');
   };
 
   if (error) console.log(error);

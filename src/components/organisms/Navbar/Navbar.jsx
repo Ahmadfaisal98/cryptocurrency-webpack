@@ -1,36 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import { Menu, Typography, Avatar } from 'antd';
 import { Link } from 'react-router-dom';
-import {
-  HomeOutlined,
-  BulbOutlined,
-  FundOutlined,
-  LoginOutlined,
-  HeartOutlined,
-  LogoutOutlined,
-} from '@ant-design/icons/lib/icons';
+import { LoginOutlined, LogoutOutlined } from '@ant-design/icons/lib/icons';
 import { useDispatch } from 'react-redux';
+import { useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import icon from '@/images/logo-criptocurrency.png';
 import { MenuButton } from '@/components/molecules';
 import { getCookie, removeCookie } from '@/helpers/cookie';
-import { useSelector } from 'react-redux';
 import { setIsLogin } from '@/features/userSlice';
+import { listNavbar } from './constans';
 
 const { Item } = Menu;
 
 const Navbar = () => {
+  const dispatch = useDispatch();
+  const location = useLocation();
   const [activeMenu, setActiveMenu] = useState(false);
   const [screenSize, setScreenSize] = useState(null);
+  const [selectMenu, setSelectMenu] = useState(location.pathname);
   const isLogin = useSelector((state) => state.userSlice.isLogin);
-  const dispatch = useDispatch();
   const accessToken = getCookie('accessToken');
 
   useEffect(() => {
     if (accessToken) {
       dispatch(setIsLogin(true));
-    } else {
-      dispatch(setIsLogin(false));
     }
   }, [accessToken, isLogin, dispatch]);
 
@@ -52,6 +47,12 @@ const Navbar = () => {
     }
   }, [screenSize]);
 
+  useEffect(() => {
+    setSelectMenu(location.pathname);
+  }, [location.pathname]);
+
+  console.log({ selectMenu });
+
   return (
     <div className="navbar">
       <div className="navbar__container">
@@ -65,32 +66,39 @@ const Navbar = () => {
 
         {activeMenu && (
           <Menu theme="dark">
-            <Item key={1} icon={<HomeOutlined />}>
-              <Link to="/">Home</Link>
-            </Item>
-            <Item key={2} icon={<FundOutlined />}>
-              <Link to="/cryptocurrencies">Crytocurrencies</Link>
-            </Item>
-            <Item key={3} icon={<BulbOutlined />}>
-              <Link to="/news">News</Link>
-            </Item>
-            <Item key={4} icon={<HeartOutlined />}>
-              <Link to="/favorite">Favorite</Link>
-            </Item>
+            {listNavbar.map((el, index) => (
+              <Item
+                key={index}
+                icon={el.icon}
+                onClick={() => setSelectMenu(el.to)}
+                className={selectMenu === el.to ? 'ant-menu-item-selected' : ''}
+              >
+                <Link to={el.to}>{el.label}</Link>
+              </Item>
+            ))}
             {isLogin ? (
               <Item key={5} icon={<LogoutOutlined />}>
                 <Link
                   to="/"
                   onClick={() => {
                     removeCookie('accessToken');
+                    dispatch(setIsLogin(false));
                   }}
                 >
                   Logout
                 </Link>
               </Item>
             ) : (
-              <Item key={6} icon={<LoginOutlined />}>
-                <Link to="/login">Login</Link>
+              <Item
+                key={6}
+                className={
+                  selectMenu === '/login' ? 'ant-menu-item-selected' : ''
+                }
+                icon={<LoginOutlined />}
+              >
+                <Link to="/login" onClick={() => setSelectMenu('/login')}>
+                  Login
+                </Link>
               </Item>
             )}
           </Menu>

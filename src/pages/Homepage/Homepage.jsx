@@ -22,30 +22,33 @@ const Homepage = () => {
       </Title>
       <Row>
         <Col span={12}>
-          <Statistic title="Total Cryptocurrencies" value={globalStats.total} />
+          <Statistic
+            title="Total Cryptocurrencies"
+            value={globalStats?.total}
+          />
         </Col>
         <Col span={12}>
           <Statistic
             title="Total Exchanges"
-            value={milify(globalStats.totalExchanges)}
+            value={milify(globalStats?.totalExchanges)}
           />
         </Col>
         <Col span={12}>
           <Statistic
             title="Total Market Cap"
-            value={milify(globalStats.totalMarketCap)}
+            value={milify(globalStats?.totalMarketCap)}
           />
         </Col>
         <Col span={12}>
           <Statistic
             title="Total 24h Volume"
-            value={milify(globalStats.total24hVolume)}
+            value={milify(globalStats?.total24hVolume)}
           />
         </Col>
         <Col span={12}>
           <Statistic
             title="Total Markets"
-            value={milify(globalStats.totalMarkets)}
+            value={milify(globalStats?.totalMarkets)}
           />
         </Col>
       </Row>
