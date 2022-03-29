@@ -12,8 +12,14 @@
 
 @import './vendors/antd';
 
-@import '../components/atoms/**/*.scss';
-@import '../components/molecules/**/*.scss';
-@import '../components/organisms/**/*.scss';
-@import '../components/templates/**/*.scss';
-@import '../pages/**/*.scss';
+// @import '../components/atoms/**/*.scss';
+// @import '../components/molecules/**/*.scss';
+// @import '../components/organisms/**/*.scss';
+// @import '../components/templates/**/*.scss';
+// @import '../pages/**/*.scss';
+
+@import '../components/atoms/index.scss';
+@import '../components/molecules/index.scss';
+@import '../components/organisms/index.scss';
+@import '../components/templates/layout';
+@import '../pages/index.scss';

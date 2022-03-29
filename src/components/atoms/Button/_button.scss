@@ -1,34 +1,38 @@
 .btn {
-  background-color: green;
-
-  // Size
-  &__small {
-    width: 2rem;
-  }
-  &__medium {
-    width: 3rem;
-  }
-  &__large {
-    width: 10rem;
-  }
-
-  // Color
-  &--blue {
-    background-color: #1890ff;
-    color: #fff;
-
-    &:focus {
-      background-color: #1890ff;
-      color: #fff;
+  &.size {
+    &_small {
+      padding: 2px;
+      height: 30px;
+    }
+    &_medium {
+      padding: 5px;
+      height: 45px;
+    }
+    &_large {
+      padding: 10px;
+      height: 60px;
     }
   }
-  &--green {
-    background-color: green;
-    color: #aaa;
 
-    &:focus {
+  &.color {
+    &_blue {
+      background-color: #1890ff;
+      color: #fff;
+
+      &:focus {
+        background-color: #1890ff;
+        color: #fff;
+      }
+    }
+
+    &_green {
       background-color: green;
       color: #aaa;
+
+      &:focus {
+        background-color: green;
+        color: #aaa;
+      }
     }
   }
 }
