@@ -51,8 +51,6 @@ const Navbar = () => {
     setSelectMenu(location.pathname);
   }, [location.pathname]);
 
-  console.log({ selectMenu });
-
   return (
     <div className="navbar">
       <div className="navbar__container">

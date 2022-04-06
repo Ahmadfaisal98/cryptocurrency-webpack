@@ -8,7 +8,7 @@ const Button = ({ content, className, onClick, color, size, text }) => {
       className={`btn ${className} color_${color} size_${size}`}
       onClick={onClick}
     >
-      {text ? text : content}
+      {content ? content : text}
     </AntButton>
   );
 };
@@ -16,7 +16,7 @@ const Button = ({ content, className, onClick, color, size, text }) => {
 export default Button;
 
 Button.defaultProps = {
-  content: <div />,
+  content: undefined,
   className: '',
   onClick: undefined,
   color: 'default',
@@ -25,7 +25,7 @@ Button.defaultProps = {
 };
 
 Button.propTypes = {
-  content: PropTypes.node,
+  content: PropTypes.element,
   className: PropTypes.string,
   text: PropTypes.string,
   onClick: PropTypes.func,

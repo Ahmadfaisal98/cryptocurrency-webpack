@@ -10,6 +10,11 @@
     margin: 0px;
     width: 20%;
     background-color: var(--background-navbar);
+
+    .ant-menu-item {
+      display: flex;
+      align-items: center;
+    }
   }
 
   &__header {

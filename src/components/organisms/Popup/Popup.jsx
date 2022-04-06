@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Modal } from 'antd';
 import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 export default function Popup({ title }) {
   const [isModalVisible, setIsModalVisible] = useState(true);
@@ -34,3 +35,11 @@ export default function Popup({ title }) {
     </>
   );
 }
+
+Popup.defaultProps = {
+  title: 'This is a title!',
+};
+
+Popup.propTypes = {
+  title: PropTypes.string,
+};

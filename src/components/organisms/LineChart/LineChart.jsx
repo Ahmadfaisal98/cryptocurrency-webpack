@@ -1,6 +1,7 @@
 import React from 'react';
 import { Line } from 'react-chartjs-2';
 import { Col, Row, Typography } from 'antd';
+import PropTypes from 'prop-types';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -10,6 +11,11 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
+import {
+  defaultCoinHistory,
+  defaultCoinName,
+  defaultCurrentPrice,
+} from './constans';
 
 const { Title } = Typography;
 
@@ -65,3 +71,15 @@ const LineChart = ({ coinHistory, currentPrice, coinName }) => {
 };
 
 export default LineChart;
+
+LineChart.defaultProps = {
+  coinHistory: defaultCoinHistory,
+  currentPrice: defaultCurrentPrice,
+  coinName: defaultCoinName,
+};
+
+LineChart.propTypes = {
+  coinHistory: PropTypes.object,
+  currentPrice: PropTypes.string,
+  coinName: PropTypes.string,
+};
